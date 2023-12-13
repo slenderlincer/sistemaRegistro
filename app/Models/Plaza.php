@@ -19,6 +19,6 @@ class Plaza extends Model
         'plaza',
         'tipoCategoria',
         'plazaCompleta',
-        // Agrega aquí los demás campos según sea necesario
+  
     ];
 }

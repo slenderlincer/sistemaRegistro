@@ -9,25 +9,19 @@ class PlazaController extends Controller
 {
     public function showRegistroPlazas()
 {
+    //muestra las plazas registradas en la vista verRegistroPlazas
     $plazas = Plaza::all();
     return view('verRegistroPlazas', compact('plazas'));
 }
-    /**
-     * Muestra el formulario de registro de plazas.
-     *
-     * @return \Illuminate\View\View
-     */
+    //Muestra el formulario de registro de plazas.
+   
     public function showRegistrationForm()
     {
         return view('registrarPlazas');
     }
 
-    /**
-     * Procesa el formulario de registro de plazas y almacena los datos en la base de datos.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //Procesa el formulario de registro de plazas y almacena los datos en la base de datos.
+
     public function register(Request $request)
     {
         $plazaCompleta = $request->input('indice') . $request->input('subindice') . $request->input('categoria') . $request->input('horas') . $request->input('plaza');
@@ -42,7 +36,7 @@ class PlazaController extends Controller
             'tipoCategoria' => $request->input('tipoCategoria'),
             'plazaCompleta' => $plazaCompleta,
         ]);
-        // Redirecciona de vuelta con un mensaje de éxito
+        // Redirecciona a la vista de verRegistroPlazas con un mensaje de éxito
         return redirect()->route('verRegistroPlazas')->with('success', 'Registro de plaza exitoso');
     }
 }

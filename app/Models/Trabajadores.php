@@ -9,21 +9,21 @@ class Trabajadores extends Model
     protected $primaryKey = 'numeroTarjeta';
     protected $fillable = [
         'numeroTarjeta',
-        'Nombre', // Cambiado desde 'nombre'
+        'Nombre', 
         'ApellidoPaterno',
         'ApellidoMaterno',
         'NombreCompleto',
-        'Sexo', // Cambiado desde 'sexo'
-        'Correo', // Cambiado desde 'correo'
+        'Sexo', 
+        'Correo', 
         'Telefono',
         'RFC',
         'CURP',
-        'fecha_nacimiento', // Cambiado desde 'edad'
+        'fecha_nacimiento', 
         'Antiguedad',
         'Grado',
         'id_plaza',
         'id_rol',
-        'Discapacidad', // Cambiado desde 'discapacidad'
+        'Discapacidad', 
         'Sistema',
         'Posgrado',
         'Dedicacion',
@@ -39,9 +39,10 @@ class Trabajadores extends Model
     {
         return $this->belongsTo(TableRol::class, 'id_rol');
     }
+    //Relacion con el modelo Asignacion
     public function asignacion()
-{
+    {
     return $this->hasOne(Asignacion::class, 'numeroTarjeta', 'numeroTarjeta');
-}
+    }
 }
 

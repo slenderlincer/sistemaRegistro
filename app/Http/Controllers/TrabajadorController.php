@@ -51,12 +51,8 @@ class TrabajadorController extends Controller
         return view('registrarPersonal', compact('plazas', 'roles', 'departamentos'));
     }
 
-    /**
-     * Procesa el formulario de registro de trabajadores y almacena los datos en la base de datos.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //Procesa el formulario de registro de trabajadores y almacena los datos en la base de datos.
+
     public function register(Request $request)
     {
         $NombreCompleto = $request->input('Nombre') . ' ' . $request->input('ApellidoPaterno') . ' ' . $request->input('ApellidoMaterno');
@@ -73,9 +69,9 @@ class TrabajadorController extends Controller
             'fecha_nacimiento' => 'required|date',
             'Antiguedad' => 'required|integer',
             'Grado' => 'required|string',
-            'id_plaza' => 'required|integer', // Asegúrate de ajustar según el nombre real del campo
+            'id_plaza' => 'required|integer', 
             'id_rol' => 'required|integer',
-            'Discapacidad' => 'nullable|string', // Puedes ajustar según tus necesidades
+            'Discapacidad' => 'nullable|string', 
             'Sistema' => 'required|string',
             'Posgrado' => 'required|string',
             'Dedicacion' => 'required|string',
@@ -104,24 +100,18 @@ class TrabajadorController extends Controller
             'Dedicacion' => $request->input('Dedicacion'),
         ]);
 
-        // Redirecciona de vuelta con un mensaje de éxito
+        // Redirecciona a al vista de verRegistroTrabajadores con un mensaje de éxito
         return redirect()->route('verRegistroTrabajadores')->with('success', 'Registro de trabajador exitoso');
     }
 
-    /**
-     * Actualiza los datos del trabajador en la base de datos.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $numeroTarjeta
-     * @return \Illuminate\Http\Response
-     */
+    //Actualiza los datos del trabajador en la base de datos.
     public function actualizarTrabajador(Request $request, $numeroTarjeta)
     {
         $request->validate([
-            // ... (Agrega las reglas de validación según tus necesidades)
+            //validar datos
         ]);
 
-        // Obtén el trabajador por su número de tarjeta
+        // se obtiene el trabajador por su número de tarjeta
         $trabajador = Trabajadores::where('numeroTarjeta', $numeroTarjeta)->firstOrFail();
 
         // Actualiza los campos del trabajador con los nuevos datos

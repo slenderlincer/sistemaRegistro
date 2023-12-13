@@ -15,9 +15,10 @@ class Departamento extends Model
 
     protected $fillable = [
         'tipoDepartamento',
-        // Agrega aquí otros campos según sea necesario
+       
     ];
 
+    //Relacion con el modelo Asignacion
     public function asignaciones()
     {
         return $this->hasMany(Asignacion::class, 'id_departamento');

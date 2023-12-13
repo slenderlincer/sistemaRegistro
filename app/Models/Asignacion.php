@@ -23,6 +23,7 @@ class Asignacion extends Model
         return $this->belongsTo(Departamento::class, 'id_departamento');
     }
 
+    //Relacion con el modelo Trabajadores
     public function trabajador()
     {
         return $this->belongsTo(Trabajadores::class, 'numeroTarjeta', 'numeroTarjeta');

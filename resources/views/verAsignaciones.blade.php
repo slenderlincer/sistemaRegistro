@@ -22,7 +22,6 @@
                 <option value="3">Correo</option>
                 <option value="4">Extensión</option>
                 <option value="5">Fecha de Creación</option>
-                <!-- Agrega más opciones según sea necesario -->
             </select>
             <input type="text" id="buscarInput" oninput="filtrarTabla()" class="p-2 border rounded">
         </div>
